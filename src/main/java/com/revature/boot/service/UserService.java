@@ -20,15 +20,14 @@ public class UserService {
 	public void setArtistRepository(UserRepository artistRepository) {
 		this.userRepository = artistRepository;
 	}
-	
 	@Transactional
 	public Iterable<User> getAllArtists() {
 		return this.userRepository.findAll();
 	}
 	
 	@Transactional
-	public User saveNewArtist(User a) {
-		return userRepository.save(a);
+	public User saveNewArtist(User user) {
+		return userRepository.save(user);
 	}
 	
 	@Transactional
