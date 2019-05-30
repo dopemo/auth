@@ -2,9 +2,14 @@ package com.revature.boot.controller;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,13 +23,13 @@ public class ArtistController {
 	UserService artistService;
 	
 	@GetMapping
-	public JsonRet getAll() {
-		JsonRet jsonRet=new JsonRet("welcome to our api, please add your key to the url to access our sources");
+	public Mykeys getAll() {
+		Mykeys jsonRet=new Mykeys("welcome to our api, please add your key to the url to access our sources");
 		
 		return jsonRet;
 	}
 	@GetMapping("/{key}")
-	public JsonRet auth(@PathVariable("key") String key){
+	public Mykeys auth(@PathVariable("key") String key){
 		boolean flag=false;
 		
 		ArrayList<User> users=(ArrayList<User>) artistService.getAllArtists();
@@ -35,13 +40,15 @@ public class ArtistController {
 			
 		}
 		if(flag==true){
-			JsonRet s=new JsonRet("Welcome to our api");
+			Mykeys s=new Mykeys("Welcome to our api");
 			return s;
 		}
 		else{
-			JsonRet s=new JsonRet("please enter a valid api key");
+			Mykeys s=new Mykeys("please enter a valid api key");
 			return s;
 		}
 	}
+	
+
 	
 }

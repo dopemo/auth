@@ -1,20 +1,21 @@
 package com.revature.boot.controller;
 
 public class JsonRet {
-private String message;
+private String key;
 
-public JsonRet(String message) {
+public JsonRet(String key) {
 	super();
-	this.message = message;
+	this.key = key;
 }
 
 public String getMessage() {
-	return message;
+	return key;
 }
 
-public void setMessage(String message) {
-	this.message = message;
+public void setMessage(String key) {
+	this.key = key;
 }
 
 
 }
+

@@ -20,13 +20,13 @@ public class SignUpController {
 	@Autowired
 	UserService userService;
 	@GetMapping
-	public JsonRet getAll() {
-		JsonRet jsonRet=new JsonRet("please add your username and password to the url seperated by '/'");
+	public Mykeys getAll() {
+		Mykeys jsonRet=new Mykeys("please add your username and password to the url seperated by '/'");
 		
 		return jsonRet;
 	}
 	@GetMapping("/{username}/{password}")
-	public JsonRet auth(@PathVariable("username") String username, @PathVariable("password") String password){
+	public Mykeys auth(@PathVariable("username") String username, @PathVariable("password") String password){
 		User user =new User();
 		user.setName(username);
 		user.setPassword(password);
@@ -34,7 +34,7 @@ public class SignUpController {
         aNumber = (int)((Math.random() * 9000000)+1000000); 
 		user.setApikey(Integer.toString(aNumber)+"aabb32");
 		userService.saveNewArtist(user);
-		JsonRet jsonRet=new JsonRet("your api key: "+user.getApikey());
+		Mykeys jsonRet=new Mykeys(user.getApikey());
 		return jsonRet;
 	}
 }
